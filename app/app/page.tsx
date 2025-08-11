@@ -149,19 +149,19 @@ export default function AppPage() {
           <div className="card p-6">
             <h2 className="text-xl font-semibold">CV（サマリー）</h2>
             {extract.extracted.summary && <p className="mt-2 text-slate-200">{extract.extracted.summary}</p>}
-            {extract.extracted.strengths?.length>0 && (
+            {(extract.extracted.strengths?.length ?? 0) > 0 && (
               <div className="mt-4">
                 <h3 className="font-medium mb-2">得意分野・強み</h3>
                 <ul className="list-disc list-inside text-slate-200">
-                  {extract.extracted.strengths.map((s,i)=>(<li key={i}>{s}</li>))}
+                  {extract.extracted.strengths?.map((s,i)=>(<li key={i}>{s}</li>))}
                 </ul>
               </div>
             )}
-            {extract.extracted.recommendedAssignments?.length>0 && (
+            {(extract.extracted.recommendedAssignments?.length ?? 0) > 0 && (
               <div className="mt-4">
                 <h3 className="font-medium mb-2">推奨アサイン領域</h3>
                 <div className="flex flex-wrap gap-2">
-                  {extract.extracted.recommendedAssignments.map((r,i)=>(
+                  {extract.extracted.recommendedAssignments?.map((r,i)=>(
                     <span key={i} className="px-3 py-1 rounded-full bg-primary/20 text-primary text-sm">{r}</span>
                   ))}
                 </div>
@@ -224,11 +224,11 @@ export default function AppPage() {
             </div>
           </div>
 
-          {extract.extracted.others?.length>0 && (
+          {(extract.extracted.others?.length ?? 0) > 0 && (
             <div className="card p-6">
               <h3 className="font-semibold mb-2">その他</h3>
               <ul className="list-disc list-inside text-slate-200">
-                {extract.extracted.others.map((o,i)=>(<li key={i}>{o}</li>))}
+                {extract.extracted.others?.map((o,i)=>(<li key={i}>{o}</li>))}
               </ul>
             </div>
           )}
